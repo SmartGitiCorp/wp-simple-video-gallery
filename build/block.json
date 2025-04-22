@@ -1,0 +1,31 @@
+{
+  "name": "video-gallery-block/video-gallery",
+  "title": "Video Gallery",
+  "category": "media",
+  "icon": "video-alt2",
+  "description": "Display videos from media library in a grid with popup player",
+  "textdomain": "video-gallery-block",
+  "apiVersion": 2,
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./style.css",
+  "style": "file:../../assets/css/style.css",
+  "viewScript": "file:../../assets/js/frontend.js",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "example": {
+    "attributes": {
+      "videos": []
+    }
+  },
+  "attributes": {
+    "videos": {
+      "type": "array",
+      "default": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "videogallery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "wordpress": "wp-scripts start",
+    "wordpress:build": "wp-scripts build",
+    "postcss": "postcss ./assets/scss/tailwind.scss -o ./assets/scss/output.scss --watch",
+    "postcss:build": "postcss ./assets/scss/tailwind.scss -o ./assets/scss/output.scss",
+    "start": "wp-scripts start ",
+    "build": "wp-scripts build",
+    "vite": "vite",
+    "vite:build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@wordpress/block-editor": "^14.17.0",
+    "@wordpress/blocks": "^14.11.0",
+    "@wordpress/components": "^29.8.0",
+    "@wordpress/data": "^10.22.0",
+    "@wordpress/i18n": "^5.22.0",
+    "@wordpress/scripts": "^30.15.0"
+  }
+}

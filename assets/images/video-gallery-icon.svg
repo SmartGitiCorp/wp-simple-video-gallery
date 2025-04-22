@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="12" fill="#2C3E50"/>
+  
+  <!-- Video Gallery Grid -->
+  <rect x="16" y="16" width="42" height="42" rx="4" fill="#3498DB"/>
+  <rect x="16" y="70" width="42" height="42" rx="4" fill="#F39C12"/>
+  <rect x="70" y="16" width="42" height="42" rx="4" fill="#E74C3C"/>
+  <rect x="70" y="70" width="42" height="42" rx="4" fill="#1ABC9C"/>
+  
+  <!-- Play Icons -->
+  <path d="M37 33L29 28V38L37 33Z" fill="white"/>
+  <path d="M37 87L29 82V92L37 87Z" fill="white"/>
+  <path d="M91 33L83 28V38L91 33Z" fill="white"/>
+  <path d="M91 87L83 82V92L91 87Z" fill="white"/>
+</svg> 

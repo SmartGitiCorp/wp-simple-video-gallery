@@ -1,0 +1,270 @@
+.video-gallery-block-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.video-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.video-gallery-grid:has(.video-gallery-item:nth-child(1):nth-last-child(1)) {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.video-gallery-grid:has(.video-gallery-item:nth-child(1):nth-last-child(2)),
+.video-gallery-grid:has(.video-gallery-item:nth-child(2):nth-last-child(1)) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.video-gallery-grid:has(.video-gallery-item:nth-child(1):nth-last-child(3)),
+.video-gallery-grid:has(.video-gallery-item:nth-child(2):nth-last-child(2)),
+.video-gallery-grid:has(.video-gallery-item:nth-child(3):nth-last-child(1)) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.video-gallery-grid.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.video-gallery-grid.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.video-gallery-grid.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.video-gallery-grid.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.video-gallery-item {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.video-gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-gallery-item video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background-color: #000;
+  pointer-events: none;
+}
+
+.video-title {
+  padding: 10px;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Play overlay */
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.video-gallery-item:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.play-button::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 5px;
+}
+
+/* Video popup */
+.video-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.video-popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 900px;
+  background: #000;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-popup-content video {
+  width: 100%;
+  max-height: 80vh;
+}
+
+.close-popup {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-video-title {
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .video-gallery-grid {
+    padding: 15px;
+  }
+
+  /* On tablets, 3 videos max per row */
+  .video-gallery-grid.grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .video-gallery-grid {
+    gap: 15px;
+  }
+
+  /* On small tablets, 2 videos max per row */
+  .video-gallery-grid.grid-cols-3,
+  .video-gallery-grid.grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Popup adjustments for smaller screens */
+  .video-popup-content {
+    width: 95%;
+  }
+
+  .close-popup {
+    top: -20px;
+    right: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* On mobile, 1 video per row */
+  .video-gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+}
+
+/* Add these error handling styles */
+.error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.video-error-message {
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  max-width: 80%;
+}
+
+.video-error {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.video-error p {
+  margin: 10px 0;
+}
+
+/* Fix for video loading */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #000;
+  min-height: 150px;
+  overflow: hidden;
+}
